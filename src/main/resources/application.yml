@@ -1,0 +1,18 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          spring:
+            issuer-uri: http://localhost.identity.team:9000
+        registration:
+          messaging-client-oidc:
+            provider: spring
+            client-id: messaging-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            scope: message.read,message.write
+            client-name: messaging-client-authorization-code
+            redirect-uri: "http://client.samples.localhost.identity.team:8080/authorized"
+messages:
+  base-uri: http://127.0.0.1:8090/messages
